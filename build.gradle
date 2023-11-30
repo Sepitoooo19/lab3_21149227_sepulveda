@@ -2,11 +2,11 @@ plugins {
     id 'application'
 }
 
-application{
-
-    mainClassName ='org.example.Main'
+application {
+    mainClassName = 'org.example.Main'
 }
-group = 'or.gexample'
+
+group = 'org.example'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -21,6 +21,5 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-
 
 

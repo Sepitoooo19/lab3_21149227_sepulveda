@@ -42,8 +42,19 @@ public class Main {
         chatbot.chatbotAddFlow(flow3);
         chatbot.chatbotAddFlow(flow3);
 
-        System.out.println(chatbot);
 
+
+        Chatbot chatbot2 = new Chatbot(2, "Chatbot", "Hola", 1, flows);
+        Chatbot chatbot3 = new Chatbot(3, "Chatbot", "Hola", 1, flows);
+
+        List<Chatbot> chatbots = new ArrayList<>();
+
+        chatbots.add(chatbot);
+        chatbots.add(chatbot2);
+        chatbots.add(chatbot3);
+
+        Sistema sistema = new Sistema("Sistema", 1, chatbots);
+        System.out.println(sistema);
 
 
     }
