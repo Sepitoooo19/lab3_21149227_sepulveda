@@ -53,9 +53,24 @@ public class Main {
         chatbots.add(chatbot2);
         chatbots.add(chatbot3);
 
+        User user = new User("Juan");
+        User user2 = new User("Juan");
+        User user3 = new User("Benja");
+        User user4 = new User("Jaime");
+
         Sistema sistema = new Sistema("Sistema", 1, chatbots);
+        sistema.systemAddUser(user);
+        sistema.systemAddUser(user2);
+        sistema.systemAddUser(user3);
+        sistema.systemAddUser(user4);
+        sistema.systemLoginUser(user);
+        sistema.systemLoginUser(user2);
+        sistema.systemLoginUser(user3);
+        sistema.systemLoginUser(user4);
+        sistema.systemLogout();
         System.out.println(sistema);
 
 
     }
+
 }

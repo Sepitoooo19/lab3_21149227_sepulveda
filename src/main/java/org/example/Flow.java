@@ -80,13 +80,14 @@ public class Flow implements IFlow{
 
     }
 
+
     @Override
     public String toString() {
-        return "Flow{" +
-                "id=" + id +
-                ", namemsg='" + namemsg + '\'' +
-                ", options=" + options +
-                '}';
+        return "[" + id + "," +
+                namemsg + "," +
+                options + "\n" +
+                "]";
+
     }
 
 }

@@ -58,12 +58,12 @@ public class Option {
 
     @Override
     public String toString() {
-        return "Option{" +
-                "code=" + code +
-                ", chatbotCodeLink=" + chatbotCodeLink +
-                ", initialFlowCodeLink=" + initialFlowCodeLink +
-                ", keywords=" + keywords +
-                '}';
+        return "[" +
+                code +
+                "," + chatbotCodeLink +
+                "," + initialFlowCodeLink +
+                "," + keywords +
+                "]";
 
     }
 }

@@ -86,18 +86,6 @@ public class Chatbot implements IChatbot{
 
         this.flows = flows;
     }
-
-    @Override
-    public String toString() {
-        return "Chatbot{" +
-                "chatbotID=" + chatbotID +
-                ", name='" + name + '\'' +
-                ", welcomeMessage='" + welcomeMessage + '\'' +
-                ", startFlowId=" + startFlowId +
-                ", flows=" + flows +
-                '}';
-    }
-
     public void chatbotAddFlow(Flow flow){
 
         boolean existeFlow = false;
@@ -112,4 +100,16 @@ public class Chatbot implements IChatbot{
         }
 
     }
+    @Override
+    public String toString() {
+        return "[" +
+                chatbotID +
+                "," + name+
+                "," + welcomeMessage +
+                "," + startFlowId + "\n"+
+                flows +
+                "]";
+    }
+
+
 }
