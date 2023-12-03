@@ -6,6 +6,8 @@ public class Option {
 
     int code;
 
+    String message;
+
     int chatbotCodeLink;
 
     int initialFlowCodeLink;
@@ -15,8 +17,9 @@ public class Option {
 
     //CONSTRUCTOR
 
-    public Option(int code, int chatbotCodeLink, int initialFlowCodeLink, List<String> keywords) {
+    public Option(int code, String message, int chatbotCodeLink, int initialFlowCodeLink, List<String> keywords) {
         this.code = code;
+        this.message = message;
         this.chatbotCodeLink = chatbotCodeLink;
         this.initialFlowCodeLink = initialFlowCodeLink;
         this.keywords = keywords;
@@ -59,7 +62,7 @@ public class Option {
     @Override
     public String toString() {
         return "[" +
-                code +
+                code + "," + message +
                 "," + chatbotCodeLink +
                 "," + initialFlowCodeLink +
                 "," + keywords +
