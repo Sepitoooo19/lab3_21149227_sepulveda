@@ -264,6 +264,7 @@ public class Main {
         chatbots.add(chatbot2);
         chatbots.add(chatbot3);
 
+        //usuarios
 
         User user = new User("Juan");
         User user2 = new User("Juan");
