@@ -80,6 +80,14 @@ public class Flow implements IFlow{
 
     }
 
+    public String messageOptions(){
+        String message = "";
+        for(Option option : options){
+            message += option.getMessage() + "\n";
+        }
+        return message;
+    }
+
 
     @Override
     public String toString() {

@@ -31,7 +31,7 @@ public class Main {
         options.add(a2);
         options.add(a3);
 
-        Flow flow = new Flow(1, "Flujo Principal Chatbot 1 ienvenido ¿Qué te gustaría hacer?", options);
+        Flow flow = new Flow(1, "Flujo Principal Chatbot 1\nBienvenido ¿Qué te gustaría hacer?", options);
         List<Flow> flows = new ArrayList<>();
         flows.add(flow);
         flows.add(flow);
@@ -40,7 +40,7 @@ public class Main {
         flow.flowAddOption(a2);
         flow.flowAddOption(a3);
 
-        Chatbot chatbot0 = new Chatbot(0, "Inicial", "Inicial Bienvenido ¿Qué te gustaría hacer?", 1, flows);
+        Chatbot chatbot0 = new Chatbot(0, "Inicial", "Inicial Bienvenido\n¿Qué te gustaría hacer?", 1, flows);
 
 
         //CHATBOT 1 Flujo 1
@@ -70,10 +70,10 @@ public class Main {
         keywords7.add("volver");
         keywords7.add("salir");
 
-        Option b1 = new Option(1,"1) Primer Nivel", 1, 1, keywords4);
-        Option b2 = new Option(2,"2) Segundo Nivel" ,1, 1, keywords5);
-        Option b3 = new Option(3,"3) Tercer Nivel", 1, 1, keywords6);
-        Option b4 = new Option(4,"4) Volver", 1, 1, keywords7);
+        Option b1 = new Option(1,"1) Primer Nivel", 1, 2, keywords4);
+        Option b2 = new Option(2,"2) Segundo Nivel" ,1, 3, keywords5);
+        Option b3 = new Option(3,"3) Tercer Nivel", 1, 4, keywords6);
+        Option b4 = new Option(4,"4) Volver", 0, 1, keywords7);
 
         //Chatbot 1 Flujo 2
 
@@ -152,9 +152,9 @@ public class Main {
         options4.add(d4);
         options4.add(d5);
 
-        Flow flow2 = new Flow(1, "Flujo 1 Chatbot1 ¿De que nivel te gustaría consultar el material?", options2);
-        Flow flow3 = new Flow(2, "Flujo 2 Chatbot1 ¿Que ramo quieres ver?", options3);
-        Flow flow4 = new Flow(3, "Flujo 3 Chatbot1 ¿Que tipo de material quieres ver?", options4);
+        Flow flow2 = new Flow(1, "Flujo 1 Chatbot1\n¿De que nivel te gustaría consultar el material?", options2);
+        Flow flow3 = new Flow(2, "Flujo 2 Chatbot1\n¿Que ramo quieres ver?", options3);
+        Flow flow4 = new Flow(3, "Flujo 3 Chatbot1\n¿Que tipo de material quieres ver?", options4);
 
         List<Flow> flows2 = new ArrayList<>();
         flows2.add(flow2);
@@ -171,7 +171,7 @@ public class Main {
         flow4.flowAddOption(d1);
         flow4.flowAddOption(d2);
 
-        Chatbot chatbot1 = new Chatbot(1, "Usach Premium", "Chatbot 1 Bienvenido ¿Qué te gustaría hacer?", 1, flows2);
+        Chatbot chatbot1 = new Chatbot(1, "Usach Premium", "Chatbot 1 Bienvenido\n¿Qué te gustaría hacer?", 1, flows2);
 
         chatbot1.chatbotAddFlow(flow2);
         chatbot1.chatbotAddFlow(flow3);
@@ -203,7 +203,7 @@ public class Main {
         options5.add(e2);
         options5.add(e3);
 
-        Flow flow5 = new Flow(1, "Flujo 1 Chatbot2 ¿Cómo te gustaría procrastinar?", options5);
+        Flow flow5 = new Flow(1, "Flujo 1 Chatbot2\n¿Cómo te gustaría procrastinar?", options5);
 
         List<Flow> flows3 = new ArrayList<>();
         flows3.add(flow5);
@@ -212,7 +212,7 @@ public class Main {
         flow5.flowAddOption(e2);
         flow5.flowAddOption(e3);
 
-        Chatbot chatbot2 = new Chatbot(2, "Procastinacion", "Chatbot 2 Bienvenido ¿Qué te gustaría hacer?", 1, flows3);
+        Chatbot chatbot2 = new Chatbot(2, "Procastinacion", "Chatbot 2 Bienvenido\n¿Qué te gustaría hacer?", 1, flows3);
 
         chatbot2.chatbotAddFlow(flow5);
 
@@ -244,7 +244,7 @@ public class Main {
         options6.add(f2);
         options6.add(f3);
 
-        Flow flow6 = new Flow(1, "Flujo 1 Chatbot3 ¿En dónde te gustaría jugar?", options6);
+        Flow flow6 = new Flow(1, "Flujo 1 Chatbot3\n¿En dónde te gustaría jugar?", options6);
 
         List<Flow> flows4 = new ArrayList<>();
         flows4.add(flow6);
@@ -253,7 +253,7 @@ public class Main {
         flow6.flowAddOption(f2);
         flow6.flowAddOption(f3);
 
-        Chatbot chatbot3 = new Chatbot(3, "Jugar", "Chatbot 3 Bienvenido ¿Qué te gustaría hacer?", 1, flows4);
+        Chatbot chatbot3 = new Chatbot(3, "Jugar", "Chatbot 3 Bienvenido\n¿Qué te gustaría hacer?", 1, flows4);
         chatbot3.chatbotAddFlow(flow6);
 
 
@@ -264,29 +264,40 @@ public class Main {
         chatbots.add(chatbot2);
         chatbots.add(chatbot3);
 
-        //usuarios
 
-        User user = new User("Juan");
-        User user2 = new User("Juan");
-        User user3 = new User("Benja");
-        User user4 = new User("Jaime");
-        User user5 = new User("Reinaldo");
-        User user6 = new User("Felipe");
+        User user = new UserAdmin("Juan");
+        User user2 = new UserAdmin("Juan");
+        User user3 = new CommonUser("Benja");
+        User user4 = new CommonUser("Jaime");
 
-        Sistema sistema = new Sistema("Sistema", 1, chatbots);
+        Sistema sistema = new Sistema("Sistema", 0, chatbots);
         sistema.systemAddUser(user);
         sistema.systemAddUser(user2);
         sistema.systemAddUser(user3);
         sistema.systemAddUser(user4);
-        sistema.systemAddUser(user5);
-        sistema.systemAddUser(user6);
-        sistema.systemLoginUser(user);
-        sistema.systemLoginUser(user2);
-        sistema.systemLoginUser(user3);
-        sistema.systemLoginUser(user4);
+        sistema.systemLoginUser("Juan");
+        sistema.systemLoginUser("Benja");
+        sistema.systemLoginUser("Jaime");
+        sistema.systemLoginUser("Juan");
         sistema.systemLogout();
-        sistema.systemLoginUser(user);
-        System.out.println(sistema);
+        sistema.systemLoginUser("Juan");
+        sistema.systemTalk("chao");
+        sistema.systemTalk("videos");
+        sistema.systemTalk("1");
+        sistema.systemLogout();
+        sistema.systemLoginUser("Benja");
+        sistema.systemTalk("hola");
+        sistema.systemTalk("1");
+        sistema.systemTalk("1");
+        sistema.systemTalk("4");
+        sistema.systemTalk("5");
+        sistema.systemTalk("4");
+        sistema.systemTalk("2");
+        sistema.systemTalk("3");
+        sistema.systemTalk("3");
+
+
+        System.out.println(sistema.systemSynthesis("Benja"));
 
     }
 

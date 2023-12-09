@@ -6,7 +6,7 @@ public interface ISistema {
     void systemAddChatbot(Chatbot chatbot);
     void systemAddUser(User user);
 
-    void systemLoginUser(User user);
+    void systemLoginUser(String user);
 
     void systemLogout();
 

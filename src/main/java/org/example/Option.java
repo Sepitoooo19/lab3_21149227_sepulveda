@@ -34,6 +34,14 @@ public class Option {
         this.code = code;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public int getChatbotCodeLink() {
         return chatbotCodeLink;
     }
@@ -62,8 +70,9 @@ public class Option {
     @Override
     public String toString() {
         return "[" +
-                code + "," + message +
-                "," + chatbotCodeLink +
+                code +
+                "," + message + "," +
+                chatbotCodeLink +
                 "," + initialFlowCodeLink +
                 "," + keywords +
                 "]";

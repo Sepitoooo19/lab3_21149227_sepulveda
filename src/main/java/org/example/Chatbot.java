@@ -100,6 +100,20 @@ public class Chatbot implements IChatbot{
         }
 
     }
+
+
+    public Flow flowById(int id){
+        for(Flow flow : flows){
+            if(flow.getId() == id){
+                return flow;
+            }
+        }
+        return null;
+    }
+
+
+
+
     @Override
     public String toString() {
         return "[" +
