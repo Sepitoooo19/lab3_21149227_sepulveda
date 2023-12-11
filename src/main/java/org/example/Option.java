@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Option {
 
-    int code;
+    private int code;
 
-    String message;
+    private String message;
 
-    int chatbotCodeLink;
+    private int chatbotCodeLink;
 
-    int initialFlowCodeLink;
+    private int initialFlowCodeLink;
 
-    List<String> keywords;
+    private List<String> keywords;
 
 
     //CONSTRUCTOR

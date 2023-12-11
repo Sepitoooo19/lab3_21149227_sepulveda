@@ -3,6 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
+
 //a
 public class Main {
     public static void main(String[] args) {
@@ -22,9 +23,9 @@ public class Main {
         keywords3.add("videojuegos");
         keywords3.add("consolas");
 
-        Option a1 = new Option(1, "1) Ayudantias",1, 1, keywords);
-        Option a2 = new Option(2, "2) Flojear",2, 1, keywords2);
-        Option a3 = new Option(3,"3) Jugar",3, 1, keywords3);
+        Option a1 = new Option(1, "1) Ayudantias", 1, 1, keywords);
+        Option a2 = new Option(2, "2) Flojear", 2, 1, keywords2);
+        Option a3 = new Option(3, "3) Jugar", 3, 1, keywords3);
 
         List<Option> options = new ArrayList<>();
         options.add(a1);
@@ -70,10 +71,10 @@ public class Main {
         keywords7.add("volver");
         keywords7.add("salir");
 
-        Option b1 = new Option(1,"1) Primer Nivel", 1, 2, keywords4);
-        Option b2 = new Option(2,"2) Segundo Nivel" ,1, 3, keywords5);
-        Option b3 = new Option(3,"3) Tercer Nivel", 1, 4, keywords6);
-        Option b4 = new Option(4,"4) Volver", 0, 1, keywords7);
+        Option b1 = new Option(1, "1) Primer Nivel", 1, 2, keywords4);
+        Option b2 = new Option(2, "2) Segundo Nivel", 1, 3, keywords5);
+        Option b3 = new Option(3, "3) Tercer Nivel", 1, 4, keywords6);
+        Option b4 = new Option(4, "4) Volver", 0, 1, keywords7);
 
         //Chatbot 1 Flujo 2
 
@@ -98,10 +99,10 @@ public class Main {
         keywords11.add("cambiar");
         keywords11.add("salir");
 
-        Option c1 = new Option(1,"1) Calculo 1", 1, 2, keywords8);
-        Option c2 = new Option(2,"2) Algebra 1", 1, 2, keywords9);
-        Option c3 = new Option(3,"3) Fisica 1", 1, 2, keywords10);
-        Option c4 = new Option(4,"4) Cambiar Nivel", 1, 1, keywords11);
+        Option c1 = new Option(1, "1) Calculo 1", 1, 2, keywords8);
+        Option c2 = new Option(2, "2) Algebra 1", 1, 2, keywords9);
+        Option c3 = new Option(3, "3) Fisica 1", 1, 2, keywords10);
+        Option c4 = new Option(4, "4) Cambiar Nivel", 1, 1, keywords11);
 
         //Chatbot 1 Flujo 3
 
@@ -127,11 +128,11 @@ public class Main {
         keywords16.add("nivel");
 
 
-        Option d1 = new Option(1,"1) Ayudantias completas", 1, 3, keywords12);
-        Option d2 = new Option(2,"2) Capsulas", 1, 3, keywords13);
-        Option d3 = new Option(3,"3) Papeo", 1, 3, keywords14);
-        Option d4 = new Option(4,"4) Agregar más ramos", 1, 2, keywords15);
-        Option d5 = new Option(5,"5) Otro Nivel", 1, 1, keywords16);
+        Option d1 = new Option(1, "1) Ayudantias completas", 1, 3, keywords12);
+        Option d2 = new Option(2, "2) Capsulas", 1, 3, keywords13);
+        Option d3 = new Option(3, "3) Papeo", 1, 3, keywords14);
+        Option d4 = new Option(4, "4) Agregar más ramos", 1, 2, keywords15);
+        Option d5 = new Option(5, "5) Otro Nivel", 1, 1, keywords16);
 
         List<Option> options2 = new ArrayList<>();
         options2.add(b1);
@@ -178,7 +179,6 @@ public class Main {
         chatbot1.chatbotAddFlow(flow4);
 
 
-
         //CHATBOT 2 Flujo 1
 
         List<String> keywords17 = new ArrayList<>();
@@ -194,9 +194,9 @@ public class Main {
         keywords19.add("salir");
 
 
-        Option e1 = new Option(1,"1) Echarse en la cama", 2, 1, keywords17);
-        Option e2 = new Option(2,"2) No hacer nada", 2, 1, keywords18);
-        Option e3 = new Option(3,"3) Volver", 0, 1, keywords19);
+        Option e1 = new Option(1, "1) Echarse en la cama", 2, 1, keywords17);
+        Option e2 = new Option(2, "2) No hacer nada", 2, 1, keywords18);
+        Option e3 = new Option(3, "3) Volver", 0, 1, keywords19);
 
         List<Option> options5 = new ArrayList<>();
         options5.add(e1);
@@ -235,9 +235,9 @@ public class Main {
         keywords22.add("android");
         keywords22.add("apk");
 
-        Option f1 = new Option(1,"1) Computador", 3, 1, keywords20);
-        Option f2 = new Option(2,"2) Consola", 3, 1, keywords21);
-        Option f3 = new Option(3,"3) Celular", 3, 1, keywords22);
+        Option f1 = new Option(1, "1) Computador", 3, 1, keywords20);
+        Option f2 = new Option(2, "2) Consola", 3, 1, keywords21);
+        Option f3 = new Option(3, "3) Celular", 3, 1, keywords22);
 
         List<Option> options6 = new ArrayList<>();
         options6.add(f1);
@@ -266,39 +266,21 @@ public class Main {
 
 
         User user = new UserAdmin("Juan");
-        User user2 = new UserAdmin("Juan");
         User user3 = new CommonUser("Benja");
+        User user5 = new CommonUser("Benja");
         User user4 = new CommonUser("Jaime");
 
         Sistema sistema = new Sistema("Sistema", 0, chatbots);
         sistema.systemAddUser(user);
-        sistema.systemAddUser(user2);
         sistema.systemAddUser(user3);
         sistema.systemAddUser(user4);
-        sistema.systemLoginUser("Juan");
-        sistema.systemLoginUser("Benja");
-        sistema.systemLoginUser("Jaime");
-        sistema.systemLoginUser("Juan");
         sistema.systemLogout();
-        sistema.systemLoginUser("Juan");
-        sistema.systemTalk("chao");
-        sistema.systemTalk("videos");
-        sistema.systemTalk("1");
-        sistema.systemLogout();
-        sistema.systemLoginUser("Benja");
-        sistema.systemTalk("hola");
-        sistema.systemTalk("1");
-        sistema.systemTalk("1");
-        sistema.systemTalk("4");
-        sistema.systemTalk("5");
-        sistema.systemTalk("4");
-        sistema.systemTalk("2");
-        sistema.systemTalk("3");
-        sistema.systemTalk("3");
+        Menu menu = new Menu();
+        List<Sistema> sistemas = new ArrayList<>();
+        sistemas.add(sistema);
+        menu.menuPrincipal(sistema, sistemas);
 
 
-        System.out.println(sistema.systemSynthesis("Benja"));
 
     }
-
 }

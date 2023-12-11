@@ -5,11 +5,11 @@ import java.util.List;
 
 public class User {
 
-    String name;
+    private String name;
 
-    List<String> chatHistory = new ArrayList<>();
+    private List<String> chatHistory = new ArrayList<>();
 
-    String tipoUsuario;
+    private String tipoUsuario;
 
 
     public User(String name, String tipoUsuario) {
@@ -31,6 +31,14 @@ public class User {
 
     public void addChatHistory(String chatHistory) {
         this.chatHistory.add(chatHistory);
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
 

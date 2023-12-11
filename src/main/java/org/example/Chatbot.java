@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Chatbot implements IChatbot{
 
-    int chatbotID;
+    private int chatbotID;
 
-    String name;
-    String welcomeMessage;
+    private String name;
+    private String welcomeMessage;
 
-    int startFlowId;
+    private int startFlowId;
 
 
-    List<Flow> flows;
+    private List<Flow> flows;
 
     public Chatbot(int chatbotID, String name, String welcomeMessage, int startFlowId, List<Flow> flows) {
         this.chatbotID = chatbotID;

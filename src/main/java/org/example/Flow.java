@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class Flow implements IFlow{
 
-    int id;
+    private int id;
 
-    String namemsg;
+    private String namemsg;
 
-    List<Option> options;
+    private List<Option> options;
 
 
 

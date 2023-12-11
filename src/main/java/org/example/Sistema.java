@@ -6,19 +6,20 @@ import java.util.List;
 
 public class Sistema implements ISistema{
 
-    String name;
 
-    int initialChatbotCodeLink;
+    private String name;
 
-    List<Chatbot> chatbots;
+    private int initialChatbotCodeLink;
 
-    List<User> registerUserList;
+    private List<Chatbot> chatbots;
 
-    List<String> logedUserList;
+    private List<User> registerUserList;
 
-    int actualChatbotId;
+    private List<String> logedUserList;
 
-    int actualFlowId;
+    private int actualChatbotId;
+
+    private int actualFlowId;
 
 
 
@@ -114,16 +115,16 @@ public class Sistema implements ISistema{
     }
 
     public void systemAddUser(User user){
-        boolean existeUser = false;
-        for(int i  = 0; i < registerUserList.size(); i++){
-            if(registerUserList.get(i).getName() == user.getName()) {
-                existeUser = true;
-                break;
+            boolean existeUser = false;
+            for(int i  = 0; i < registerUserList.size(); i++){
+                if(registerUserList.get(i).getName().equals(user.getName())) {
+                    existeUser = true;
+                    break;
+                }
             }
-        }
-        if(!existeUser){
-            this.registerUserList.add(user);
-        }
+            if(!existeUser){
+                this.registerUserList.add(user);
+            }
     }
 
     public void systemLoginUser(String user) {
@@ -218,6 +219,14 @@ public class Sistema implements ISistema{
         }
         return conversation;
 
+    }
+
+    public List<String> getRegisterUserNameList(){
+        List<String> registerUserNameList = new ArrayList<>();
+        for(User user : registerUserList){
+            registerUserNameList.add(user.getName());
+        }
+        return registerUserNameList;
     }
 
 
