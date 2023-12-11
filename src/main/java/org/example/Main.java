@@ -23,17 +23,17 @@ public class Main {
         keywords3.add("videojuegos");
         keywords3.add("consolas");
 
-        Option a1 = new Option(1, "1) Ayudantias", 1, 1, keywords);
-        Option a2 = new Option(2, "2) Flojear", 2, 1, keywords2);
-        Option a3 = new Option(3, "3) Jugar", 3, 1, keywords3);
+        TDAOption_21149227_SepulvedaFlores a1 = new TDAOption_21149227_SepulvedaFlores(1, "1) Ayudantias", 1, 1, keywords);
+        TDAOption_21149227_SepulvedaFlores a2 = new TDAOption_21149227_SepulvedaFlores(2, "2) Flojear", 2, 1, keywords2);
+        TDAOption_21149227_SepulvedaFlores a3 = new TDAOption_21149227_SepulvedaFlores(3, "3) Jugar", 3, 1, keywords3);
 
-        List<Option> options = new ArrayList<>();
+        List<TDAOption_21149227_SepulvedaFlores> options = new ArrayList<>();
         options.add(a1);
         options.add(a2);
         options.add(a3);
 
-        Flow flow = new Flow(1, "Flujo Principal Chatbot 1\nBienvenido ¿Qué te gustaría hacer?", options);
-        List<Flow> flows = new ArrayList<>();
+        TDAFlow_21149227_SepulvedaFlores flow = new TDAFlow_21149227_SepulvedaFlores(1, "Flujo Principal Chatbot 1\nBienvenido ¿Qué te gustaría hacer?", options);
+        List<TDAFlow_21149227_SepulvedaFlores> flows = new ArrayList<>();
         flows.add(flow);
         flows.add(flow);
 
@@ -41,7 +41,7 @@ public class Main {
         flow.flowAddOption(a2);
         flow.flowAddOption(a3);
 
-        Chatbot chatbot0 = new Chatbot(0, "Inicial", "Inicial Bienvenido\n¿Qué te gustaría hacer?", 1, flows);
+        TDAChatbot_21149227_SepulvedaFlores chatbot0 = new TDAChatbot_21149227_SepulvedaFlores(0, "Inicial", "Inicial Bienvenido\n¿Qué te gustaría hacer?", 1, flows);
 
 
         //CHATBOT 1 Flujo 1
@@ -71,10 +71,10 @@ public class Main {
         keywords7.add("volver");
         keywords7.add("salir");
 
-        Option b1 = new Option(1, "1) Primer Nivel", 1, 2, keywords4);
-        Option b2 = new Option(2, "2) Segundo Nivel", 1, 3, keywords5);
-        Option b3 = new Option(3, "3) Tercer Nivel", 1, 4, keywords6);
-        Option b4 = new Option(4, "4) Volver", 0, 1, keywords7);
+        TDAOption_21149227_SepulvedaFlores b1 = new TDAOption_21149227_SepulvedaFlores(1, "1) Primer Nivel", 1, 2, keywords4);
+        TDAOption_21149227_SepulvedaFlores b2 = new TDAOption_21149227_SepulvedaFlores(2, "2) Segundo Nivel", 1, 3, keywords5);
+        TDAOption_21149227_SepulvedaFlores b3 = new TDAOption_21149227_SepulvedaFlores(3, "3) Tercer Nivel", 1, 4, keywords6);
+        TDAOption_21149227_SepulvedaFlores b4 = new TDAOption_21149227_SepulvedaFlores(4, "4) Volver", 0, 1, keywords7);
 
         //Chatbot 1 Flujo 2
 
@@ -99,10 +99,10 @@ public class Main {
         keywords11.add("cambiar");
         keywords11.add("salir");
 
-        Option c1 = new Option(1, "1) Calculo 1", 1, 2, keywords8);
-        Option c2 = new Option(2, "2) Algebra 1", 1, 2, keywords9);
-        Option c3 = new Option(3, "3) Fisica 1", 1, 2, keywords10);
-        Option c4 = new Option(4, "4) Cambiar Nivel", 1, 1, keywords11);
+        TDAOption_21149227_SepulvedaFlores c1 = new TDAOption_21149227_SepulvedaFlores(1, "1) Calculo 1", 1, 2, keywords8);
+        TDAOption_21149227_SepulvedaFlores c2 = new TDAOption_21149227_SepulvedaFlores(2, "2) Algebra 1", 1, 2, keywords9);
+        TDAOption_21149227_SepulvedaFlores c3 = new TDAOption_21149227_SepulvedaFlores(3, "3) Fisica 1", 1, 2, keywords10);
+        TDAOption_21149227_SepulvedaFlores c4 = new TDAOption_21149227_SepulvedaFlores(4, "4) Cambiar Nivel", 1, 1, keywords11);
 
         //Chatbot 1 Flujo 3
 
@@ -128,36 +128,36 @@ public class Main {
         keywords16.add("nivel");
 
 
-        Option d1 = new Option(1, "1) Ayudantias completas", 1, 3, keywords12);
-        Option d2 = new Option(2, "2) Capsulas", 1, 3, keywords13);
-        Option d3 = new Option(3, "3) Papeo", 1, 3, keywords14);
-        Option d4 = new Option(4, "4) Agregar más ramos", 1, 2, keywords15);
-        Option d5 = new Option(5, "5) Otro Nivel", 1, 1, keywords16);
+        TDAOption_21149227_SepulvedaFlores d1 = new TDAOption_21149227_SepulvedaFlores(1, "1) Ayudantias completas", 1, 3, keywords12);
+        TDAOption_21149227_SepulvedaFlores d2 = new TDAOption_21149227_SepulvedaFlores(2, "2) Capsulas", 1, 3, keywords13);
+        TDAOption_21149227_SepulvedaFlores d3 = new TDAOption_21149227_SepulvedaFlores(3, "3) Papeo", 1, 3, keywords14);
+        TDAOption_21149227_SepulvedaFlores d4 = new TDAOption_21149227_SepulvedaFlores(4, "4) Agregar más ramos", 1, 2, keywords15);
+        TDAOption_21149227_SepulvedaFlores d5 = new TDAOption_21149227_SepulvedaFlores(5, "5) Otro Nivel", 1, 1, keywords16);
 
-        List<Option> options2 = new ArrayList<>();
+        List<TDAOption_21149227_SepulvedaFlores> options2 = new ArrayList<>();
         options2.add(b1);
         options2.add(b2);
         options2.add(b3);
         options2.add(b4);
 
-        List<Option> options3 = new ArrayList<>();
+        List<TDAOption_21149227_SepulvedaFlores> options3 = new ArrayList<>();
         options3.add(c1);
         options3.add(c2);
         options3.add(c3);
         options3.add(c4);
 
-        List<Option> options4 = new ArrayList<>();
+        List<TDAOption_21149227_SepulvedaFlores> options4 = new ArrayList<>();
         options4.add(d1);
         options4.add(d2);
         options4.add(d3);
         options4.add(d4);
         options4.add(d5);
 
-        Flow flow2 = new Flow(1, "Flujo 1 Chatbot1\n¿De que nivel te gustaría consultar el material?", options2);
-        Flow flow3 = new Flow(2, "Flujo 2 Chatbot1\n¿Que ramo quieres ver?", options3);
-        Flow flow4 = new Flow(3, "Flujo 3 Chatbot1\n¿Que tipo de material quieres ver?", options4);
+        TDAFlow_21149227_SepulvedaFlores flow2 = new TDAFlow_21149227_SepulvedaFlores(1, "Flujo 1 Chatbot1\n¿De que nivel te gustaría consultar el material?", options2);
+        TDAFlow_21149227_SepulvedaFlores flow3 = new TDAFlow_21149227_SepulvedaFlores(2, "Flujo 2 Chatbot1\n¿Que ramo quieres ver?", options3);
+        TDAFlow_21149227_SepulvedaFlores flow4 = new TDAFlow_21149227_SepulvedaFlores(3, "Flujo 3 Chatbot1\n¿Que tipo de material quieres ver?", options4);
 
-        List<Flow> flows2 = new ArrayList<>();
+        List<TDAFlow_21149227_SepulvedaFlores> flows2 = new ArrayList<>();
         flows2.add(flow2);
         flows2.add(flow3);
         flows2.add(flow4);
@@ -172,7 +172,7 @@ public class Main {
         flow4.flowAddOption(d1);
         flow4.flowAddOption(d2);
 
-        Chatbot chatbot1 = new Chatbot(1, "Usach Premium", "Chatbot 1 Bienvenido\n¿Qué te gustaría hacer?", 1, flows2);
+        TDAChatbot_21149227_SepulvedaFlores chatbot1 = new TDAChatbot_21149227_SepulvedaFlores(1, "Usach Premium", "Chatbot 1 Bienvenido\n¿Qué te gustaría hacer?", 1, flows2);
 
         chatbot1.chatbotAddFlow(flow2);
         chatbot1.chatbotAddFlow(flow3);
@@ -194,25 +194,25 @@ public class Main {
         keywords19.add("salir");
 
 
-        Option e1 = new Option(1, "1) Echarse en la cama", 2, 1, keywords17);
-        Option e2 = new Option(2, "2) No hacer nada", 2, 1, keywords18);
-        Option e3 = new Option(3, "3) Volver", 0, 1, keywords19);
+        TDAOption_21149227_SepulvedaFlores e1 = new TDAOption_21149227_SepulvedaFlores(1, "1) Echarse en la cama", 2, 1, keywords17);
+        TDAOption_21149227_SepulvedaFlores e2 = new TDAOption_21149227_SepulvedaFlores(2, "2) No hacer nada", 2, 1, keywords18);
+        TDAOption_21149227_SepulvedaFlores e3 = new TDAOption_21149227_SepulvedaFlores(3, "3) Volver", 0, 1, keywords19);
 
-        List<Option> options5 = new ArrayList<>();
+        List<TDAOption_21149227_SepulvedaFlores> options5 = new ArrayList<>();
         options5.add(e1);
         options5.add(e2);
         options5.add(e3);
 
-        Flow flow5 = new Flow(1, "Flujo 1 Chatbot2\n¿Cómo te gustaría procrastinar?", options5);
+        TDAFlow_21149227_SepulvedaFlores flow5 = new TDAFlow_21149227_SepulvedaFlores(1, "Flujo 1 Chatbot2\n¿Cómo te gustaría procrastinar?", options5);
 
-        List<Flow> flows3 = new ArrayList<>();
+        List<TDAFlow_21149227_SepulvedaFlores> flows3 = new ArrayList<>();
         flows3.add(flow5);
 
         flow5.flowAddOption(e1);
         flow5.flowAddOption(e2);
         flow5.flowAddOption(e3);
 
-        Chatbot chatbot2 = new Chatbot(2, "Procastinacion", "Chatbot 2 Bienvenido\n¿Qué te gustaría hacer?", 1, flows3);
+        TDAChatbot_21149227_SepulvedaFlores chatbot2 = new TDAChatbot_21149227_SepulvedaFlores(2, "Procastinacion", "Chatbot 2 Bienvenido\n¿Qué te gustaría hacer?", 1, flows3);
 
         chatbot2.chatbotAddFlow(flow5);
 
@@ -235,29 +235,29 @@ public class Main {
         keywords22.add("android");
         keywords22.add("apk");
 
-        Option f1 = new Option(1, "1) Computador", 3, 1, keywords20);
-        Option f2 = new Option(2, "2) Consola", 3, 1, keywords21);
-        Option f3 = new Option(3, "3) Celular", 3, 1, keywords22);
+        TDAOption_21149227_SepulvedaFlores f1 = new TDAOption_21149227_SepulvedaFlores(1, "1) Computador", 3, 1, keywords20);
+        TDAOption_21149227_SepulvedaFlores f2 = new TDAOption_21149227_SepulvedaFlores(2, "2) Consola", 3, 1, keywords21);
+        TDAOption_21149227_SepulvedaFlores f3 = new TDAOption_21149227_SepulvedaFlores(3, "3) Celular", 3, 1, keywords22);
 
-        List<Option> options6 = new ArrayList<>();
+        List<TDAOption_21149227_SepulvedaFlores> options6 = new ArrayList<>();
         options6.add(f1);
         options6.add(f2);
         options6.add(f3);
 
-        Flow flow6 = new Flow(1, "Flujo 1 Chatbot3\n¿En dónde te gustaría jugar?", options6);
+        TDAFlow_21149227_SepulvedaFlores flow6 = new TDAFlow_21149227_SepulvedaFlores(1, "Flujo 1 Chatbot3\n¿En dónde te gustaría jugar?", options6);
 
-        List<Flow> flows4 = new ArrayList<>();
+        List<TDAFlow_21149227_SepulvedaFlores> flows4 = new ArrayList<>();
         flows4.add(flow6);
 
         flow6.flowAddOption(f1);
         flow6.flowAddOption(f2);
         flow6.flowAddOption(f3);
 
-        Chatbot chatbot3 = new Chatbot(3, "Jugar", "Chatbot 3 Bienvenido\n¿Qué te gustaría hacer?", 1, flows4);
+        TDAChatbot_21149227_SepulvedaFlores chatbot3 = new TDAChatbot_21149227_SepulvedaFlores(3, "Jugar", "Chatbot 3 Bienvenido\n¿Qué te gustaría hacer?", 1, flows4);
         chatbot3.chatbotAddFlow(flow6);
 
 
-        List<Chatbot> chatbots = new ArrayList<>();
+        List<TDAChatbot_21149227_SepulvedaFlores> chatbots = new ArrayList<>();
 
         chatbots.add(chatbot0);
         chatbots.add(chatbot1);
@@ -265,18 +265,18 @@ public class Main {
         chatbots.add(chatbot3);
 
 
-        User user = new UserAdmin("Juan");
-        User user3 = new CommonUser("Benja");
-        User user5 = new CommonUser("Benja");
-        User user4 = new CommonUser("Jaime");
+        TDAUser_21149227_SepulvedaFlores user = new TDAUserAdmin_21149227_SepulvedaFlores("Juan");
+        TDAUser_21149227_SepulvedaFlores user3 = new TDACommonUser_21149227_SepulvedaFlores("Benja");
+        TDAUser_21149227_SepulvedaFlores user5 = new TDACommonUser_21149227_SepulvedaFlores("Benja");
+        TDAUser_21149227_SepulvedaFlores user4 = new TDACommonUser_21149227_SepulvedaFlores("Jaime");
 
-        Sistema sistema = new Sistema("Sistema", 0, chatbots);
+        TDASistema_21149227_SepulvedaFlores sistema = new TDASistema_21149227_SepulvedaFlores("Sistema", 0, chatbots);
         sistema.systemAddUser(user);
         sistema.systemAddUser(user3);
         sistema.systemAddUser(user4);
         sistema.systemLogout();
-        Menu menu = new Menu();
-        List<Sistema> sistemas = new ArrayList<>();
+        TDAMenu_21149227_SepulvedaFlores menu = new TDAMenu_21149227_SepulvedaFlores();
+        List<TDASistema_21149227_SepulvedaFlores> sistemas = new ArrayList<>();
         sistemas.add(sistema);
         menu.menuPrincipal(sistema, sistemas);
 

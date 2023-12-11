@@ -4,16 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Menu {
+public class TDAMenu_21149227_SepulvedaFlores implements TDAIMenu_21149227_SepulvedaFlores{
 
 
     final int OPCIONES_NOADMIN = 2;
     final int OPCIONES_ADMIN = 7;
 
+    /**
+     * Constructor del Menu
+     */
+    public TDAMenu_21149227_SepulvedaFlores(){}
 
-    public Menu(){}
-
-    public void menuPrincipal(Sistema sistema, List<Sistema> sistemas){
+    /**
+     * Este metodo crea un menu para el usuario
+     * @param sistema sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     */
+    public void menuPrincipal(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas){
         System.out.println("Bienvenido al simulador de comunicacion con Chatbots, que desea hacer?");
         System.out.println("Si desea interactuar con el sistema ya creado, ingrese 1 y luego 1");
         System.out.println("1) Ver sistema ya creado");
@@ -52,14 +59,24 @@ public class Menu {
 
     }
 
+    /**
+     * Este metodo agrega un sistema a la lista de sistemas
+     * @param sistema sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     */
 
-    public void anadirSistemaALista(Sistema sistema, List<Sistema> sistemas){
+    public void anadirSistemaALista(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas){
         sistemas.add(sistema);
     }
 
+    /**
+     * Este metodo permite ver los sistemas creados y luego decidir que hacer, si interactuar con uno de ellos
+     * o volver al menu principal
+     * @param sistemas lista de sistemas de chatbots
+     * @return sistema elegido
+     */
 
-
-    public void menuVerSistema(Sistema sistema, List<Sistema> sistemas){
+    public void menuVerSistema(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas){
         System.out.println("Sistemas creados: ");
         System.out.println(sistemas);
         System.out.println("¿Qué desea hacer?: ");
@@ -80,7 +97,14 @@ public class Menu {
         }
     }
 
-    public void menuAdmin(Sistema sistema, String userChoice, List<Sistema> sistemas){
+    /**
+     * Este metodo crea un menu para el usuario admin, donde puede crear chatbots, flujos,
+     * opciones, conversar con el chatbot, logearse, sisntesis de la conversación y cerrar sesión
+     * @param sistema
+     * @param userChoice
+     * @param sistemas
+     */
+    public void menuAdmin(TDASistema_21149227_SepulvedaFlores sistema, String userChoice, List<TDASistema_21149227_SepulvedaFlores> sistemas){
 
         System.out.println("Bienvenido " + userChoice + " al sistema de chatbots\n");
 
@@ -89,9 +113,10 @@ public class Menu {
         System.out.println("2) Crear nuevo flujo y añadir directamente a chatbot");
         System.out.println("3) Crear nueva opcion y añadir directamente a flujo");
         System.out.println("4) systemTalk");
-        System.out.println("5) systemSynthesis");
-        System.out.println("6) SystemLogout");
-        System.out.println("7) Salir");
+        System.out.println("5) systemLogin");
+        System.out.println("6) systemSynthesis");
+        System.out.println("7) SystemLogout");
+        System.out.println("8) Salir");
         Scanner input = new Scanner(System.in);
 
 
@@ -124,19 +149,28 @@ public class Menu {
                     break;
 
                 case 4:
-                    menuTalk(sistema, userChoice, sistemas);
+                    if(!sistema.getLogedUserList().isEmpty()){
+                        menuTalk(sistema, userChoice, sistemas);
+                    }
+                    else{
+                        System.out.println("No hay usuarios logeados");
+                        menuAdmin(sistema, userChoice, sistemas);
+                    }
                     break;
                 case 5:
+                    iniciarSesionEnSistemaActualAdmin(sistema, sistemas);
+                    break;
+                case 6:
                     System.out.println("Sintesis de la conversación: ");
                     System.out.println(sistema.systemSynthesis(userChoice));
                     menuAdmin(sistema, userChoice, sistemas);
                     break;
 
-                case 6:
+                case 7:
                     sistema.systemLogout();
                     menuPrincipal(sistema,sistemas);
                     break;
-                case 7:
+                case 8:
                     menuPrincipal(sistema,sistemas);
                 default:
                     System.out.println(choice4 + " is not a valid option! Please select correct option.");
@@ -146,8 +180,13 @@ public class Menu {
     }
 
 
-
-public void menuTalk(Sistema sistema, String userChoice, List<Sistema> sistemas){
+    /**
+     * crea un menu para el usuario, donde puede interactuar con el chatbot, hacer sintesis de la conversación
+     * @param sistema sistema de chatbots
+     * @param userChoice nombre del usuario
+     * @param sistemas lista de sistemas de chatbots
+     */
+    public void menuTalk(TDASistema_21149227_SepulvedaFlores sistema, String userChoice, List<TDASistema_21149227_SepulvedaFlores> sistemas){
     Scanner input = new Scanner(System.in);
 
 
@@ -197,8 +236,13 @@ public void menuTalk(Sistema sistema, String userChoice, List<Sistema> sistemas)
 
 
 
-
-    public void menuComun(Sistema sistema, String userChoice, List<Sistema> sistemas){
+    /**
+     * Este metodo crea un menu para el usuario comun, donde puede conversar con el chatbot, hacer sintesis de la conversación
+     * @param sistema sistema de chatbots
+     * @param userChoice nombre del usuario
+     * @param sistemas lista de sistemas de chatbots
+     */
+    public void menuComun(TDASistema_21149227_SepulvedaFlores sistema, String userChoice, List<TDASistema_21149227_SepulvedaFlores> sistemas){
 
         System.out.println("Bienvenido " + userChoice + " al sistema de chatbots\n");
 
@@ -217,7 +261,13 @@ public void menuTalk(Sistema sistema, String userChoice, List<Sistema> sistemas)
         do {
             switch (choice3) {
                 case 1:
-                    menuTalk(sistema, userChoice, sistemas);
+                    if(!sistema.getLogedUserList().isEmpty()){
+                        menuTalk(sistema, userChoice, sistemas);
+                    }
+                    else{
+                        System.out.println("No hay usuarios logeados");
+                        menuAdmin(sistema, userChoice, sistemas);
+                    }
                     break;
                 case 2:
                     System.out.println("Sintesis de la conversación: ");
@@ -227,7 +277,7 @@ public void menuTalk(Sistema sistema, String userChoice, List<Sistema> sistemas)
                     registrarUsuarioSistemaUnico(sistema, sistemas);
                     break;
                 case 4:
-                    iniciarSesionEnSistemaActual(sistema, sistemas);
+                    iniciarSesionEnSistemaActualComun(sistema, sistemas);
                     break;
                 case 5:
                     cerrarSesionActual(sistema);
@@ -243,29 +293,40 @@ public void menuTalk(Sistema sistema, String userChoice, List<Sistema> sistemas)
 
     }
 
-    public void registrarUsuarioSistemaUnico(Sistema sistema, List<Sistema> sistemas){
+    /**
+     * Este metodo registra un usuario en un sistema
+     * @param sistema sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     */
+    public void registrarUsuarioSistemaUnico(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas){
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese el nombre del usuario: ");
         String nombreUsuario = input.nextLine();
         System.out.println("Ingrese el tipo de usuario: ");
         String tipoUsuario = input.nextLine();
         if (tipoUsuario.equals("admin")) {
-            User user = new UserAdmin(nombreUsuario);
+            TDAUser_21149227_SepulvedaFlores user = new TDAUserAdmin_21149227_SepulvedaFlores(nombreUsuario);
             sistema.systemAddUser(user);
             System.out.println("Usuario registrado: ");
             System.out.println(user);
             menuPrincipal(sistema, sistemas);
         }
         if (tipoUsuario.equals("common")) {
-            User user = new CommonUser(nombreUsuario);
+            TDAUser_21149227_SepulvedaFlores user = new TDACommonUser_21149227_SepulvedaFlores(nombreUsuario);
             sistema.systemAddUser(user);
             System.out.println("Usuario registrado: ");
             System.out.println(user);
             menuPrincipal(sistema, sistemas);
         }
     }
-    public void menuInteractuarChatbot(Sistema sistema, List<Sistema> sistemas) {
-        Sistema sistemaActual = eleccionSistemas(sistemas);
+
+    /**
+     * Este metodo permite interactuar con un chatbot dependiendo del tipo del usuario
+     * @param sistema sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     */
+    public void menuInteractuarChatbot(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas) {
+        TDASistema_21149227_SepulvedaFlores sistemaActual = eleccionSistemas(sistemas);
         accederUsuariosRegistradosSistemaActual(sistemaActual);
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese el nombre del usuario: ");
@@ -286,16 +347,32 @@ public void menuTalk(Sistema sistema, String userChoice, List<Sistema> sistemas)
         menuPrincipal(sistemaActual, sistemas);
     }
 
-public void accederUsuariosRegistradosSistemaActual(Sistema sistema){
+    /**
+     * Este metodo permite acceder a los usuarios registrados en un sistema
+     * @param sistema sistema de chatbots
+     */
+    public void accederUsuariosRegistradosSistemaActual(TDASistema_21149227_SepulvedaFlores sistema){
     for (int i = 0; i < sistema.getRegisterUserList().size(); i++) {
-        System.out.println(sistema.getRegisterUserList().get(i).getName());
+        if(sistema.getRegisterUserList().get(i).getTipoUsuario().equals("common")){
+            System.out.println("Usuarios comunes registrados: ");
+            System.out.println(sistema.getRegisterUserList().get(i).getName());
+
+        }
+        if(sistema.getRegisterUserList().get(i).getTipoUsuario().equals("admin")){
+            System.out.println("Usuarios admin registrados: ");
+            System.out.println(sistema.getRegisterUserList().get(i).getName());
+        }
     }
 }
 
 
+    /**
+     * Este metodo crea un sistema vacio
+     * @param sistema sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     */
 
-
-    public void crearSistemaVacio(Sistema sistema, List<Sistema> sistemas){
+    public void crearSistemaVacio(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas){
 
         Scanner input = new Scanner(System.in);
 
@@ -303,8 +380,8 @@ public void accederUsuariosRegistradosSistemaActual(Sistema sistema){
         String name = input.nextLine();
         System.out.println("Ingrese el codigo inicial del chatbot: ");
         int initialChatbotCodeLink = input.nextInt();
-        List<Chatbot> chatbots = new ArrayList<>();
-        Sistema sistema2 = new Sistema(name, initialChatbotCodeLink, chatbots);
+        List<TDAChatbot_21149227_SepulvedaFlores> chatbots = new ArrayList<>();
+        TDASistema_21149227_SepulvedaFlores sistema2 = new TDASistema_21149227_SepulvedaFlores(name, initialChatbotCodeLink, chatbots);
         System.out.println("Sistema creado:\n ");
         System.out.println(sistema2);
         anadirSistemaALista(sistema2, sistemas);
@@ -312,7 +389,12 @@ public void accederUsuariosRegistradosSistemaActual(Sistema sistema){
 
     }
 
-    public Sistema eleccionSistemas(List<Sistema> sistemas) {
+    /**
+     * Este metodo permite elegir un sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     * @return sistema elegido
+     */
+    public TDASistema_21149227_SepulvedaFlores eleccionSistemas(List<TDASistema_21149227_SepulvedaFlores> sistemas) {
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese el nombre del sistema: ");
         String name = input.nextLine();
@@ -328,10 +410,13 @@ public void accederUsuariosRegistradosSistemaActual(Sistema sistema){
 
     }
 
-
-public void registrarUsuario(Sistema sistema, List<Sistema> sistemas)
-{
-    Sistema sistemaActual = eleccionSistemas(sistemas);
+    /**
+     * Este metodo registra un usuario en un sistema
+     * @param sistema sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     */
+public void registrarUsuario(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas) {
+    TDASistema_21149227_SepulvedaFlores sistemaActual = eleccionSistemas(sistemas);
     Scanner input = new Scanner(System.in);
     System.out.println("Ingrese el nombre del usuario: ");
     String nombreUsuario = input.nextLine();
@@ -343,14 +428,14 @@ public void registrarUsuario(Sistema sistema, List<Sistema> sistemas)
     }
     else{
         if (tipoUsuario.equals("admin")) {
-            User user = new UserAdmin(nombreUsuario);
+            TDAUser_21149227_SepulvedaFlores user = new TDAUserAdmin_21149227_SepulvedaFlores(nombreUsuario);
             sistemaActual.systemAddUser(user);
             System.out.println("Usuario registrado: ");
             System.out.println(user);
             menuPrincipal(sistemaActual, sistemas);
         }
         if (tipoUsuario.equals("common")) {
-            User user = new CommonUser(nombreUsuario);
+            TDAUser_21149227_SepulvedaFlores user = new TDACommonUser_21149227_SepulvedaFlores(nombreUsuario);
             sistemaActual.systemAddUser(user);
             System.out.println("Usuario registrado: ");
             System.out.println(user);
@@ -359,7 +444,12 @@ public void registrarUsuario(Sistema sistema, List<Sistema> sistemas)
     }
 }
 
-    public void iniciarSesionEnSistemaActual(Sistema sistema, List<Sistema> sistemas) {
+    /**
+     * Este metodo permite iniciar sesión en un sistema siendo usuario comun
+     * @param sistema sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     */
+    public void iniciarSesionEnSistemaActualComun(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas) {
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese el nombre del usuario: ");
         String userChoice = input.nextLine();
@@ -379,12 +469,45 @@ public void registrarUsuario(Sistema sistema, List<Sistema> sistemas)
 
     }
 
+    /**
+     * Este metodo permite iniciar sesión en un sistema siendo usuario admin
+     * @param sistema sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     */
+    public void iniciarSesionEnSistemaActualAdmin(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Ingrese el nombre del usuario: ");
+        String userChoice = input.nextLine();
 
-    public void cerrarSesionActual(Sistema sistema){
+        if (sistema.getRegisterUserNameList().contains(userChoice)) {
+            sistema.systemLoginUser(userChoice);
+            System.out.println("Usuario logeado: ");
+            System.out.println(userChoice);
+            menuAdmin(sistema, userChoice, sistemas);
+        }
+        else {
+            System.out.println("El usuario no existe");
+            menuPrincipal(sistema, sistemas);
+        }
+
+
+
+    }
+
+    /**
+     * Este metodo permite cerrar sesión en un sistema
+     * @param sistema sistema de chatbots
+     */
+    public void cerrarSesionActual(TDASistema_21149227_SepulvedaFlores sistema){
         sistema.systemLogout();
     }
 
-    public void anadirChatbotASistema(Sistema sistema, List<Sistema> sistemas){
+    /**
+     * Este metodo permite crear un chatbot y añadirlo a un sistema
+     * @param sistema sistema de chatbots
+     * @param sistemas lista de sistemas de chatbots
+     */
+    public void anadirChatbotASistema(TDASistema_21149227_SepulvedaFlores sistema, List<TDASistema_21149227_SepulvedaFlores> sistemas){
         eleccionSistemas(sistemas);
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese el id del chatbot: ");
@@ -395,8 +518,8 @@ public void registrarUsuario(Sistema sistema, List<Sistema> sistemas)
         String mensajeBienvenidaChatbot = input.next();
         System.out.println("Ingrese el id del flujo inicial del chatbot: ");
         int idFlujoInicialChatbot = input.nextInt();
-        List<Flow> flowsChatbot = new ArrayList<>();
-        Chatbot chatbotCreado = new Chatbot(idChatbot, nombreChatbot, mensajeBienvenidaChatbot, idFlujoInicialChatbot, flowsChatbot);
+        List<TDAFlow_21149227_SepulvedaFlores> flowsChatbot = new ArrayList<>();
+        TDAChatbot_21149227_SepulvedaFlores chatbotCreado = new TDAChatbot_21149227_SepulvedaFlores(idChatbot, nombreChatbot, mensajeBienvenidaChatbot, idFlujoInicialChatbot, flowsChatbot);
         System.out.println("Chatbot creado:\n ");
         System.out.println(chatbotCreado);
         System.out.println("Ingrese el nombre del sistema al que se vincula el chatbot: ");
@@ -410,14 +533,18 @@ public void registrarUsuario(Sistema sistema, List<Sistema> sistemas)
     }
 
 
-    public void anadirFlujoAChatbot(Sistema sistema){
+    /**
+     * Este metodo permite crear un flujo y añadirlo a un chatbot
+     * @param sistema sistema de chatbots
+     */
+    public void anadirFlujoAChatbot(TDASistema_21149227_SepulvedaFlores sistema){
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese el id del flujo: ");
         int idFlujo = input.nextInt();
         System.out.println("Ingrese el mensaje del flujo: ");
         String mensajeFlujo = input.next();
-        List<Option> opcionesFlujo = new ArrayList<>();
-        Flow flujoCreado = new Flow(idFlujo, mensajeFlujo, opcionesFlujo);
+        List<TDAOption_21149227_SepulvedaFlores> opcionesFlujo = new ArrayList<>();
+        TDAFlow_21149227_SepulvedaFlores flujoCreado = new TDAFlow_21149227_SepulvedaFlores(idFlujo, mensajeFlujo, opcionesFlujo);
         System.out.println("Flujo creado:\n ");
         System.out.println(flujoCreado);
         System.out.println("Ingrese el id del chatbot al que se vincula el flujo: ");
@@ -429,7 +556,12 @@ public void registrarUsuario(Sistema sistema, List<Sistema> sistemas)
         }
     }
 
-    public void anadirOpcionAFlujo(Sistema sistema){
+    /**
+     * Este metodo permite crear una opcion y añadirla a un flujo
+     * @param sistema sistema de chatbots
+     */
+
+    public void anadirOpcionAFlujo(TDASistema_21149227_SepulvedaFlores sistema){
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese el id de la opcion: ");
         int idOpcion = input.nextInt();
@@ -447,7 +579,7 @@ public void registrarUsuario(Sistema sistema, List<Sistema> sistemas)
         System.out.println("Ingrese la segunda palabra clave: ");
         String keyword2 = input.next();
         keywordsOpcion.add(keyword2);
-        Option opcionCreada = new Option(idOpcion, mensajeOpcion, chatbotCodeLink, initialFlowCodeLink, keywordsOpcion);
+        TDAOption_21149227_SepulvedaFlores opcionCreada = new TDAOption_21149227_SepulvedaFlores(idOpcion, mensajeOpcion, chatbotCodeLink, initialFlowCodeLink, keywordsOpcion);
         System.out.println("Opcion creada:\n ");
         System.out.println(opcionCreada);
         System.out.println("Ingrese el id del flujo al que se vincula la opcion: ");

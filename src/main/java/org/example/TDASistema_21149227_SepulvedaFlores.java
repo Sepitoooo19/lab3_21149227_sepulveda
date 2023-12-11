@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Sistema implements ISistema{
+public class TDASistema_21149227_SepulvedaFlores implements TDAISistema_21149227_SepulvedaFlores {
 
 
     private String name;
 
     private int initialChatbotCodeLink;
 
-    private List<Chatbot> chatbots;
+    private List<TDAChatbot_21149227_SepulvedaFlores> chatbots;
 
-    private List<User> registerUserList;
+    private List<TDAUser_21149227_SepulvedaFlores> registerUserList;
 
     private List<String> logedUserList;
 
@@ -22,12 +22,13 @@ public class Sistema implements ISistema{
     private int actualFlowId;
 
 
-
-
-    public List<Option> actualOptions = new ArrayList<>();
-
-
-    public Sistema(String name, int initialChatbotCodeLink, List<Chatbot> chatbots) {
+    /**
+     * Este metodo es el constuctor del Sistema, crea un sistema con sus chatbots, si se repite un chatbot, no lo agrega
+     * @param name nombre del sistema de tipo String
+     * @param initialChatbotCodeLink id del chatbot inicial de tipo entero
+     * @param chatbots lista de chatbots de tipo Chatbot
+     */
+    public TDASistema_21149227_SepulvedaFlores(String name, int initialChatbotCodeLink, List<TDAChatbot_21149227_SepulvedaFlores> chatbots) {
         this.name = name;
         this.initialChatbotCodeLink = initialChatbotCodeLink;
         this.registerUserList = new ArrayList<>();
@@ -36,9 +37,9 @@ public class Sistema implements ISistema{
         this.actualChatbotId = -1;
         this.actualFlowId = -1;
 
-        for(Chatbot chatbot: chatbots){
+        for(TDAChatbot_21149227_SepulvedaFlores chatbot: chatbots){
             boolean existeChatbot = false;
-            for(Chatbot existenChatbot: this.chatbots){
+            for(TDAChatbot_21149227_SepulvedaFlores existenChatbot: this.chatbots){
                 if(existenChatbot.getChatbotID() == chatbot.getChatbotID()){
                     existeChatbot = true;
                     break;
@@ -55,51 +56,48 @@ public class Sistema implements ISistema{
     }
 
 
-
+    /**
+     * Este metodo retorna el nombre del sistema
+     * @return nombre del sistema de tipo String
+     */
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public int getInitialChatbotCodeLink() {
-        return initialChatbotCodeLink;
-    }
-
-    public void setInitialChatbotCodeLink(int initialChatbotCodeLink) {
-        this.initialChatbotCodeLink = initialChatbotCodeLink;
-    }
-
-    public List<User> getRegisterUserList() {
+    /**
+     *  Este metodo retorna la lista de usuarios registrados
+      * @return lista de usuarios registrados de tipo User
+     */
+    public List<TDAUser_21149227_SepulvedaFlores> getRegisterUserList() {
         return registerUserList;
     }
 
-    public void setRegisterUserList(List<User> registerUserList) {
-        this.registerUserList = registerUserList;
-    }
 
+    /**
+     * Este metodo retorna la lista de usuarios logeados
+     * @return lista de usuarios logeados de tipo String
+     */
     public List<String> getLogedUserList() {
         return logedUserList;
     }
 
-    public void setLogedUserList(List<String> logedUserList) {
-        this.logedUserList = logedUserList;
-    }
 
 
 
-
-    public List<Chatbot> getChatbots() {
+    /**
+     * Este metodo retorna la lista de chatbots del sistema
+     * @return lista de chatbots del sistema de tipo Chatbot
+     */
+    public List<TDAChatbot_21149227_SepulvedaFlores> getChatbots() {
         return chatbots;
     }
 
-    public void setChatbots(List<Chatbot> chatbots) {
-        this.chatbots = chatbots;
-    }
-
-    public void systemAddChatbot(Chatbot chatbot){
+    /**
+     * Este metodo agrega chatbots al sistema, si se repite un chatbot, no lo agrega
+     * @param chatbot chatbot de tipo Chatbot
+     */
+    public void systemAddChatbot(TDAChatbot_21149227_SepulvedaFlores chatbot){
 
         boolean existeChatbot = false;
         for(int i  = 0; i < chatbots.size(); i++){
@@ -114,7 +112,11 @@ public class Sistema implements ISistema{
 
     }
 
-    public void systemAddUser(User user){
+    /**
+     * Este metodo agrega usuarios al sistema, si se repite un usuario, no lo agrega
+     * @param user usuario de tipo User
+     */
+    public void systemAddUser(TDAUser_21149227_SepulvedaFlores user){
             boolean existeUser = false;
             for(int i  = 0; i < registerUserList.size(); i++){
                 if(registerUserList.get(i).getName().equals(user.getName())) {
@@ -127,6 +129,11 @@ public class Sistema implements ISistema{
             }
     }
 
+    /**
+     * Este metodo logea un usuario al sistema, si no existe el usuario
+     * en la lista de registrados o si ya hay un usuario logeado, no lo logea
+     * @param user usuario de tipo String
+     */
     public void systemLoginUser(String user) {
         boolean existeUser = false;
 
@@ -143,8 +150,12 @@ public class Sistema implements ISistema{
         }
     }
 
-    public Chatbot chatbotById(int id){
-        for(Chatbot chatbot : chatbots){
+    /**
+     * Este metodo retorna el chatbot por id del sistema
+     * @return chatbot por id del sistema de tipo Chatbot
+     */
+    public TDAChatbot_21149227_SepulvedaFlores chatbotById(int id){
+        for(TDAChatbot_21149227_SepulvedaFlores chatbot : chatbots){
             if(chatbot.getChatbotID() == id){
                 return chatbot;
             }
@@ -152,7 +163,10 @@ public class Sistema implements ISistema{
         return null;
     }
 
-
+    /**
+     * Este metodo deslogea un usuario del sistema
+     * @return sistema sin el usuario logeado
+     */
     public void systemLogout(){
 
         logedUserList = new ArrayList<>();
@@ -162,8 +176,10 @@ public class Sistema implements ISistema{
     }
 
 
-
-
+    /**
+     * Este metodo permite conversar con los chatbots del sistema, si no hay usuarios logeados, no conversa
+     * @param message mensaje de tipo String
+     */
     public void systemTalk(String message){
 
         if(logedUserList.isEmpty()){
@@ -171,11 +187,11 @@ public class Sistema implements ISistema{
         }
         else if(actualChatbotId == -1 && actualFlowId == -1)
         {
-            Chatbot chatbot = chatbotById(initialChatbotCodeLink);
-            Flow flow = chatbot.flowById(chatbot.getStartFlowId());
+            TDAChatbot_21149227_SepulvedaFlores chatbot = chatbotById(initialChatbotCodeLink);
+            TDAFlow_21149227_SepulvedaFlores flow = chatbot.flowById(chatbot.getStartFlowId());
             Date fecha = new Date();
             String conversation = fecha + " " + logedUserList.get(0)+ ":" + message + "\n" + fecha + " " + chatbot.getName() + " "+ flow.getNamemsg() +"\n" + flow.messageOptions();
-            for (User user: registerUserList){
+            for (TDAUser_21149227_SepulvedaFlores user: registerUserList){
                 if(user.getName().equals(logedUserList.get(0))){
                     user.addChatHistory(conversation);
                 }
@@ -184,9 +200,9 @@ public class Sistema implements ISistema{
             actualFlowId = flow.getId();
         }
         else{
-            Chatbot chatbot = chatbotById(actualChatbotId);
-            Flow flow = chatbot.flowById(actualFlowId);
-            for (Option option: flow.getOptions()){
+            TDAChatbot_21149227_SepulvedaFlores chatbot = chatbotById(actualChatbotId);
+            TDAFlow_21149227_SepulvedaFlores flow = chatbot.flowById(actualFlowId);
+            for (TDAOption_21149227_SepulvedaFlores option: flow.getOptions()){
                 if(option.getKeywords().contains(message) || option.getMessage().contains(message)){
                     actualFlowId = option.getInitialFlowCodeLink();
                     actualChatbotId = option.getChatbotCodeLink();
@@ -199,7 +215,7 @@ public class Sistema implements ISistema{
             flow = chatbot.flowById(actualFlowId);
             Date fecha = new Date();
             String conversation = fecha + " " + logedUserList.get(0)+ ":" + message + "\n" + fecha + " " + chatbot.getName() + " "+ flow.getNamemsg() +"\n" + flow.messageOptions();
-            for (User user: registerUserList){
+            for (TDAUser_21149227_SepulvedaFlores user: registerUserList){
                 if(user.getName().equals(logedUserList.get(0))){
                     user.addChatHistory(conversation);
                 }
@@ -207,9 +223,14 @@ public class Sistema implements ISistema{
             }
         }
 
+    /**
+     * Metodo que retorna la conversacion de un usuario
+      * @param user usuario de tipo String
+     * @return conversacion de un usuario de tipo String
+     */
     public String systemSynthesis(String user){
         String conversation = "";
-        for(User user1 : registerUserList){
+        for(TDAUser_21149227_SepulvedaFlores user1 : registerUserList){
 
             if(user1.getName().equals(user)){
                 for (String chatHistory: user1.getChatHistory()){
@@ -221,9 +242,13 @@ public class Sistema implements ISistema{
 
     }
 
+    /**
+     * Metodo que retorna la lista de usuarios registrados
+     * @return lista de usuarios registrados de tipo String
+     */
     public List<String> getRegisterUserNameList(){
         List<String> registerUserNameList = new ArrayList<>();
-        for(User user : registerUserList){
+        for(TDAUser_21149227_SepulvedaFlores user : registerUserList){
             registerUserNameList.add(user.getName());
         }
         return registerUserNameList;
@@ -235,7 +260,10 @@ public class Sistema implements ISistema{
 
 
 
-
+    /**
+     * Este metodo retorna el sistema en un string
+     * @return sistema en un string
+     */
     @Override
     public String toString() {
         return "["  +
